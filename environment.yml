@@ -1,0 +1,13 @@
+name: pythonscripts
+
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - spyder 
+  - rasterio
+  - pandas
+  - openpyxl
+  - geopandas
+ 
