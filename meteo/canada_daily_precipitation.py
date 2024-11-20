@@ -4,10 +4,14 @@ import csv
 from datetime import datetime, timedelta
 import pandas as pd
 
+#view stations on the map: https://climatedata.ca/download/#station-download
+
 # Station ID to name mapping
 STATION_MAP = {
-    44163: "Grassy_Narrows",
+    #44163: "Grassy_Narrows",
     #3965: "Minaki",
+    #3754: "Pointe du bois"
+    47307: "Kenora RCS"
     # Add more stations here as needed
 }
 
@@ -35,7 +39,7 @@ def download_data(station_id, year, month):
     
     return None
 
-def combine_csv_files(files, output_file):
+def combine_csv_files(files, output_file, remove_temporary_files):
     combined_data = []
     headers = None
     data_set = set()  # To keep track of unique rows
@@ -55,7 +59,8 @@ def combine_csv_files(files, output_file):
                     data_set.add(row_tuple)
                     combined_data.append(row)
         
-        os.remove(file)  # Remove the temporary file after combining
+        if remove_temporary_files:
+            os.remove(file)  # Remove the temporary file after combining
 
     with open(output_file, 'w', newline='') as csvfile:
         writer = csv.writer(csvfile)
@@ -66,8 +71,8 @@ def combine_csv_files(files, output_file):
 def main():
     # Configure these variables as needed
     station_ids = list(STATION_MAP.keys())
-    start_date = datetime(2009, 1, 1)
-    end_date = datetime(2009, 4, 1)
+    start_date = datetime(1967, 1, 1)
+    end_date = datetime(2024, 11, 1)
     
     for station_id in station_ids:
         station_files = []
@@ -84,7 +89,7 @@ def main():
         if station_files:
             station_name = STATION_MAP.get(station_id, f"Unknown_{station_id}")
             output_file = f"{station_name}_combined_data.csv"
-            combine_csv_files(station_files, output_file)
+            combine_csv_files(station_files, output_file, False)
 
 if __name__ == "__main__":
     main()
