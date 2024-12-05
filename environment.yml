@@ -14,3 +14,8 @@ dependencies:
   - xlrd
   - regex
   - flask
+  - ffmpeg
+  - pip
+  - pip:
+    - openai-whisper
+    
