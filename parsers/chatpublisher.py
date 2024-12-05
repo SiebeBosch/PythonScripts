@@ -90,16 +90,18 @@ format:
                     # Handle different media types
                     if media_file.lower().endswith(('.jpg', '.jpeg', '.png', '.gif')):
                         processed_message = f"\n\n![{media_file}](img/{media_file}){{width=50% fig-align='left'}}\n"
+
                     elif media_file.lower().endswith('.opus'):
                         print("searching audio file: ", media_abs_path)
                         if media_abs_path.exists():
                             transcription = transcribe_audio(media_abs_path)
                             if transcription:
-                                processed_message = f"::: {{.grid}}\n::: {{.g-col-4}}\n{media_file}\n:::\n::: {{.g-col-8}}\n*{transcription}*\n:::\n:::\n"
+                                processed_message = f"::: {{.grid}}\n::: {{.g-col-4}}\n <audio controls width='100%'><source src='img/{media_file}' type='audio/ogg; codecs=opus'>Your browser does not support the audio element.</audio>\n:::\n::: {{.g-col-8}}\n*{transcription}*\n:::\n:::\n"
                             else:
-                                processed_message = f"::: {{.grid}}\n::: {{.g-col-4}}\n{media_file}\n:::\n::: {{.g-col-8}}\n*[Transcription failed]*\n:::\n:::\n"
+                                processed_message = f"::: {{.grid}}\n::: {{.g-col-4}}\n <audio controls width='100%'><source src='img/{media_file}' type='audio/ogg; codecs=opus'>Your browser does not support the audio element.</audio>\n:::\n::: {{.g-col-8}}\n*[Transcription failed]*\n:::\n:::\n"
                         else:
-                            processed_message = f"::: {{.grid}}\n::: {{.g-col-4}}\n{media_file}\n:::\n::: {{.g-col-8}}\n*[Audio file not found]*\n:::\n:::\n"
+                            processed_message = f"::: {{.grid}}\n::: {{.g-col-4}}\n*[Audio file not found]*\n:::\n::: {{.g-col-8}}\n*[Audio file not found]*\n:::\n:::\n"
+
                     elif media_file.lower().endswith('.mp4'):
                         print("searching video file: ", media_abs_path)
                         if media_abs_path.exists():
