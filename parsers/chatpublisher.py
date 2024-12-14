@@ -1,7 +1,7 @@
 # Configure your paths here
-INPUT_FILE = r"c:\SYNC\ADMINISTRATIE\PRIVE\Uitbouw\Documentatie\chatgeschiedenis\_chat_siebe_jay.txt"    # Replace with your input file path
-OUTPUT_FILE = r"c:\SYNC\ADMINISTRATIE\PRIVE\Uitbouw\Documentatie\chatgeschiedenis\siebe_jay.qmd"    # Replace with your desired output file path
-MEDIA_FOLDER = r"c:\SYNC\ADMINISTRATIE\PRIVE\Uitbouw\Documentatie\chatgeschiedenis\img"    # Replace with your input file path
+INPUT_FILE = r"c:\SYNC\ADMINISTRATIE\PRIVE\Uitbouw\Documentatie\chatgeschiedenis\_chat_iwan.txt"    # Replace with your input file path
+OUTPUT_FILE = r"c:\SYNC\ADMINISTRATIE\PRIVE\Uitbouw\Documentatie\chatgeschiedenis\siebe_iwan.qmd"    # Replace with your desired output file path
+MEDIA_FOLDER = r"c:\SYNC\ADMINISTRATIE\PRIVE\Uitbouw\Documentatie\chatgeschiedenis\media"    # Replace with your input file path
 
 import re
 import os
